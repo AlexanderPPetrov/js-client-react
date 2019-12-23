@@ -1,0 +1,10 @@
+// Required
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+
+// Customize Bootstrap Variables
+@import "./variables";
+
+// Load Bootstrap
+@import "~bootstrap/scss/bootstrap";
