@@ -2,7 +2,9 @@ import React, {Component} from "react";
 
 class ClassComponent extends Component {
     render() {
-        return <div>Class Component Example</div>
+        return <div className="alert alert-success">
+            <i className="fa fa-cube mr-3"></i>Class Component Example
+        </div>
     }
 }
 

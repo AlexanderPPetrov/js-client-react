@@ -6,5 +6,11 @@
 // Customize Bootstrap Variables
 @import "./variables";
 
+
+// Import custom font from Google
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap&subset=cyrillic');
+
 // Load Bootstrap
 @import "~bootstrap/scss/bootstrap";
+
+@import "~font-awesome/scss/font-awesome";
