@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Item from './item';
 
 class ItemList extends Component {
 
@@ -15,7 +16,7 @@ class ItemList extends Component {
             return;
         }
         let itemList = this.state.itemList;
-        
+
         itemList.push({
             label: this.state.itemLabel
         });
@@ -41,10 +42,7 @@ class ItemList extends Component {
             </div>
         }
         return items.map((item, index) => {
-            return <li key={index} 
-            className="list-group-item">
-                {item.label}
-            </li>
+            return <Item key={index} label={item.label} />
         })
         
         
