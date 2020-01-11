@@ -24,7 +24,9 @@ const store = createStore(reducers, applyMiddleware(thunk));
 const Layout = props => (
     <>
         <Header/>
-        {props.children}
+            <div className="container mt-5">
+                {props.children}
+            </div>
         <Footer/>
     </>
 )
