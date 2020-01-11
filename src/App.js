@@ -4,7 +4,7 @@ import ClassComponent from './components/ClassComponent';
 import ReduxComponent from './components/ReduxComponent';
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
-
+import Home from './pages/Home';
 
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
@@ -36,14 +36,14 @@ const routes = [
         path: '/',
         exact: true,
         main: () => <Layout>
-            <FunctionalComponent/>
+            <Home/>
         </Layout>
     },
     {
         path: '/gallery',
         exact: false,
         main: () => <Layout>
-            <ClassComponent/>
+            <FunctionalComponent/>
         </Layout>
     }
 ]
