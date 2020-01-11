@@ -1,7 +1,30 @@
 $fa-font-path: "~font-awesome/fonts";
 
 
-$body-bg: #fafafa;
+$body-bg: #efefef;
+
+$theme-colors: (
+        "primary": #6a89fd,
+        "primary-dark": #5968cb,
+        "action": #53ad05,
+        "secondary": #687b86,
+        "action-secondary": #ff8f2b,
+        "dark-overlay": #292d29,
+        "title": #666666,
+        "border-light": #e6e6e6,
+        "border-ultra-light": #f1f1f1,
+);
+
+// Font weight
+$font-weight-semibold: 600;
+
+// Font sizes
+$font-size-sm: 0.75rem;
+$font-size-md: 0.875rem;
+$font-size-mlg: 1rem;
+$font-size-lg: 1.25rem;
+$font-size-xlg: 1.5rem;
+$font-size-xxlg: 2rem;
 
 // Override fonts
 $font-family-sans-serif: 'Roboto', sans-serif;
@@ -9,3 +32,9 @@ $font-family-serif: Georgia, 'Times New Roman', Times, serif;
 $font-family-monospace: Menlo, Monaco, Consolas, 'Liberation Mono',
 'Courier New', monospace;
 $font-family-base: $font-family-sans-serif;
+
+// Components
+
+// Card
+$card-border-color: transparent;
+$card-border-radius: .25rem;

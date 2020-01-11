@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import Item from './item';
 
 class ItemList extends Component {
@@ -25,7 +25,7 @@ class ItemList extends Component {
             itemList,
             itemLabel: ''
         })
-        
+
     }
 
     handleChange = e => {
@@ -36,24 +36,25 @@ class ItemList extends Component {
     getListItems = () => {
         const items = this.state.itemList;
 
-        if(!items.length){
+        if (!items.length) {
             return <div className="alert alert-warning">
                 Няма нищо добавено
             </div>
         }
         return items.map((item, index) => {
-            return <Item key={index} label={item.label} />
+            return <Item key={index} label={item.label}/>
         })
-        
-        
+
+
     }
+
     render() {
-        return <div>
-            <div className="input-group my-2">
+        return <>
+            <div className="input-group mb-2">
                 <input type="text"
-                    className="form-control"
-                    value={this.state.itemLabel}
-                    onChange={this.handleChange}
+                       className="form-control"
+                       value={this.state.itemLabel}
+                       onChange={this.handleChange}
                 />
                 <div className="input-group-append">
                     <button
@@ -67,7 +68,7 @@ class ItemList extends Component {
             <ul className="list-group mt-3">
                 {this.getListItems()}
             </ul>
-        </div>
+        </>
 
     }
 }

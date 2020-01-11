@@ -21,7 +21,7 @@ class QuantityInput extends Component {
         })
     }
     render() {
-        return <div className="input-group my-2">
+        return <div className="input-group mb-2">
             <div className="input-group-prepend">
                 <button 
                 onClick={this.decrementQuantity}

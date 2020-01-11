@@ -13,4 +13,10 @@
 // Load Bootstrap
 @import "~bootstrap/scss/bootstrap";
 
+
+// Bootstrap components override
+@import "bootstrap-components/navbar";
+@import "bootstrap-components/card";
+
+
 @import "~font-awesome/scss/font-awesome";

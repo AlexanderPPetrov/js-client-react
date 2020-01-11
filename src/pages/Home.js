@@ -7,13 +7,21 @@ class Home extends Component {
     render() {
         return <div className="row">
             <div className="col-md-4">
-                <ItemList/>
+                <div className="card">
+                    <div className="card-body">
+                        <ItemList/>
+                    </div>
+                </div>
             </div>
             <div className="col-md-4">
-                <QuantityInput/>
-                <QuantityInput/>
-                <QuantityInput/>
-                <QuantityInput/>
+                <div className="card">
+                    <div className="card-body">
+                        <QuantityInput/>
+                        <QuantityInput/>
+                        <QuantityInput/>
+                        <QuantityInput/>
+                    </div>
+                </div>
             </div>
         </div>
     }

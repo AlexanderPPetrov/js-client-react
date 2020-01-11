@@ -28,9 +28,15 @@ class Header extends Component {
     }
 
     render() {
-        return <Navbar color="light" light expand="md">
+        return <Navbar color="primary" dark expand="md">
             <Container>
-            <NavbarBrand href="/">ST 2020</NavbarBrand>
+                <NavLink
+                    tag={RRNavLink}
+                    className="navbar-brand"
+                    exact to="/">
+                    <i className="fa fa-cubes mr-3"></i>
+                    <span className="project-name">Software Technologies</span>
+                </NavLink>
             <NavbarToggler onClick={this.toggleIsOpen} />
             <Collapse isOpen={this.state.isOpen} navbar>
                 <Nav className="ml-auto" navbar>
