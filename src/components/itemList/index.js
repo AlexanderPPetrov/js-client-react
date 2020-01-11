@@ -14,17 +14,15 @@ class ItemList extends Component {
         if (!this.state.itemLabel) {
             return;
         }
-        const item = {
-            label: this.state.itemLabel
-        }
         let itemList = this.state.itemList;
-        itemList.push(item);
+        
+        itemList.push({
+            label: this.state.itemLabel
+        });
 
         this.setState({
             itemList,
             itemLabel: ''
-        }, ()=> {
-            console.log(this.state.itemList)
         })
         
     }
@@ -33,6 +31,23 @@ class ItemList extends Component {
         this.setState({
             itemLabel: e.target.value
         });
+    }
+    getListItems = () => {
+        const items = this.state.itemList;
+
+        if(!items.length){
+            return <div className="alert alert-warning">
+                Няма нищо добавено
+            </div>
+        }
+        return items.map((item, index) => {
+            return <li key={index} 
+            className="list-group-item">
+                {item.label}
+            </li>
+        })
+        
+        
     }
     render() {
         return <div>
@@ -52,7 +67,7 @@ class ItemList extends Component {
                 </div>
             </div>
             <ul className="list-group mt-3">
-                <li className="list-group-item">Cras justo odio</li>
+                {this.getListItems()}
             </ul>
         </div>
 
