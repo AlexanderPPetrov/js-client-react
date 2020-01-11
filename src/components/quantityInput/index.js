@@ -13,19 +13,20 @@ class QuantityInput extends Component {
         return <div className="input-group my-2">
             <div className="input-group-prepend">
                 <button 
-                className="btn btn-outline-secondary" 
+                className="btn btn-outline-success" 
                 type="button">
-                    Button
+                    <i className="fa fa-minus"></i>
                 </button>
             </div>
             <input type="text"
-                className="form-control"
+                className="form-control text-center"
+                value={this.state.quantity}
             />
             <div className="input-group-append">
                 <button 
-                className="btn btn-outline-secondary"
+                className="btn btn-outline-success"
                 type="button">
-                    Button
+                    <i className="fa fa-plus"></i>
                 </button>
             </div>
         </div>
