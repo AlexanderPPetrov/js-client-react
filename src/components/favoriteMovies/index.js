@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import * as actions from "../redux/actions";
+import * as actions from "../../redux/actions";
 class FavoriteMovies extends Component {
 
    
