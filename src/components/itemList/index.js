@@ -15,21 +15,26 @@ class ItemList extends Component {
 
     handleSearchChange = e => {
         const search = e.target.value;
-    
-        let filteredList = this.state.itemList;
+        this.setState({
+            search
+        }, ()=> {
+            this.setFilteredList();
+        })
+    }
 
+    setFilteredList = () => {
+        let filteredList = this.state.itemList;
+        const search = this.state.search;
         if(search){
             filteredList = filteredList.filter( item => {
                 return item.label.indexOf(search) != -1
             })
         }
         this.setState({
-            search,
             filteredList
         })
-
-       
     }
+
 
     handleKeyPress = e => {
         if(e.key === 'Enter'){
@@ -50,9 +55,9 @@ class ItemList extends Component {
         this.setState({
             itemList,
             itemLabel: ''
+        }, ()=> {
+            this.setFilteredList();
         })
-
-        console.log(itemList);
 
     }
 
@@ -61,7 +66,10 @@ class ItemList extends Component {
         itemList.splice(index, 1);
         this.setState({
             itemList
+        }, ()=> {
+            this.setFilteredList();
         })
+
     }
 
     handleChange = e => {
@@ -71,10 +79,7 @@ class ItemList extends Component {
     }
     getListItems = () => {
 
-        let items = this.state.itemList;
-        if(this.state.search){
-            items = this.state.filteredList;
-        }
+        let items = this.state.filteredList;
 
         if (!items.length) {
             return <div className="alert alert-warning">
