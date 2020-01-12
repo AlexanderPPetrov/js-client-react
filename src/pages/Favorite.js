@@ -5,7 +5,7 @@ class Favorite extends Component {
 
     render() {
         return <div className="row">
-            <div className="col-md-4">
+            <div className="col-md-6">
                 <div className="card">
                     <div className="card-body">
                         <FavoriteMovies/>

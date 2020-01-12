@@ -6,9 +6,16 @@ class FavoriteMovies extends Component {
 
    
     getFavoriteMovies = () => {
-        //TODO 
-        // this.props.favoriteMovies.map......
-        return null;
+        const favoriteMovies = this.props.favoriteMovies
+        const favoriteMoviesList = favoriteMovies.map((movie, index) => {
+            return <div key={movie.id} className="alert alert-success">
+            [{movie.releaseYear}] 
+            <i className="fa fa-film mx-2"></i> 
+            {movie.title}
+          </div>
+        })
+        
+        return favoriteMoviesList;
     }
     render() {
         return <div>

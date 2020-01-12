@@ -9,7 +9,7 @@ class Movies extends Component {
     }
 
     toggleFavoriteMovie = movie => {
-        const movieIndex = this.props.favoriteMovies.indexOf(movie);
+        const movieIndex = this.props.favoriteMovies.findIndex(el => el.id === movie.id);
 
         if(movieIndex !== -1){
             this.props.removeFavoriteMovie(movieIndex);
@@ -20,7 +20,7 @@ class Movies extends Component {
     }
 
     getActiveClass = movie => {
-        if(this.props.favoriteMovies.indexOf(movie) !== -1){
+        if(this.props.favoriteMovies.findIndex(el => el.id === movie.id) !== -1){
             return "active"
         }
         return ""

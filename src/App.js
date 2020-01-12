@@ -1,6 +1,4 @@
 import React from 'react';
-import FunctionalComponent from './components/FunctionalComponent';
-import ClassComponent from './components/ClassComponent';
 import Movies from './components/Movies';
 import Header from './components/header/Header';
 import Home from './pages/Home';
