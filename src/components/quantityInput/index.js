@@ -22,6 +22,17 @@ class QuantityInput extends Component {
             quantity: this.state.quantity + 1
         })
     }
+
+    getInputClassName = () => {
+        if(this.state.quantity < 3){
+            return 'bg-danger';
+        }
+        if(this.state.quantity > 7){
+            return 'bg-success';
+        }
+        return '';
+    }
+
     render() {
         return <div className="input-group mb-2">
             <div className="input-group-prepend">
@@ -34,7 +45,7 @@ class QuantityInput extends Component {
             </div>
             <input type="text"
                 readOnly
-                className="form-control text-center"
+                className={"form-control text-center " + this.getInputClassName()}
                 value={this.state.quantity}
             />
             <div className="input-group-append">

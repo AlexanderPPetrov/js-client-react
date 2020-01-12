@@ -23,13 +23,17 @@ class ItemList extends Component {
     }
 
     setFilteredList = () => {
-        let filteredList = this.state.itemList;
+        let filteredList = [];
         const search = this.state.search;
-        if(search){
-            filteredList = filteredList.filter( item => {
-                return item.label.indexOf(search) != -1
-            })
-        }
+        const itemList = this.state.itemList;
+        itemList.forEach((item, index) => {
+            if(item.label.indexOf(search) != -1){
+                filteredList.push({
+                    label: item.label,
+                    index 
+                })
+            }
+        })
         this.setState({
             filteredList
         })
@@ -81,15 +85,20 @@ class ItemList extends Component {
 
         let items = this.state.filteredList;
 
+        if(!items.length && this.state.search){
+            return <div className="alert alert-info">
+                Няма намерени резултати
+            </div>
+        }
         if (!items.length) {
             return <div className="alert alert-warning">
                 Няма нищо добавено
             </div>
         }
-        return items.map((item, index) => {
+        return items.map(item => {
             return <Item 
-            key={index}
-            removeItem={()=> this.removeItem(index)} 
+            key={item.index}
+            removeItem={()=> this.removeItem(item.index)} 
             label={item.label}/>
         })
 

@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import QuantityInput from '../components/quantityInput';
 import ItemList from '../components/itemList';
-
+import TestList from '../components/testList/testList';
 class Home extends Component {
 
     render() {
@@ -20,6 +20,13 @@ class Home extends Component {
                         <QuantityInput/>
                         <QuantityInput/>
                         <QuantityInput/>
+                    </div>
+                </div>
+            </div>
+            <div className="col-md-4">
+                <div className="card">
+                    <div className="card-body">
+                        <TestList/>
                     </div>
                 </div>
             </div>
