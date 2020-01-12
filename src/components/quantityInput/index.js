@@ -4,9 +4,11 @@ class QuantityInput extends Component {
 
     constructor(props) {
         super(props);
+
         this.state = {
             quantity: 5
         }
+        
     }
 
     decrementQuantity = () => {

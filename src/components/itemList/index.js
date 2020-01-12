@@ -7,7 +7,33 @@ class ItemList extends Component {
         super(props);
         this.state = {
             itemLabel: '',
-            itemList: []
+            search: '',
+            itemList: [],
+            filteredList: []
+        }
+    }
+
+    handleSearchChange = e => {
+        const search = e.target.value;
+    
+        let filteredList = this.state.itemList;
+
+        if(search){
+            filteredList = filteredList.filter( item => {
+                return item.label.indexOf(search) != -1
+            })
+        }
+        this.setState({
+            search,
+            filteredList
+        })
+
+       
+    }
+
+    handleKeyPress = e => {
+        if(e.key === 'Enter'){
+            this.addItem();
         }
     }
 
@@ -26,6 +52,16 @@ class ItemList extends Component {
             itemLabel: ''
         })
 
+        console.log(itemList);
+
+    }
+
+    removeItem = index => {
+        let itemList = this.state.itemList;
+        itemList.splice(index, 1);
+        this.setState({
+            itemList
+        })
     }
 
     handleChange = e => {
@@ -34,7 +70,11 @@ class ItemList extends Component {
         });
     }
     getListItems = () => {
-        const items = this.state.itemList;
+
+        let items = this.state.itemList;
+        if(this.state.search){
+            items = this.state.filteredList;
+        }
 
         if (!items.length) {
             return <div className="alert alert-warning">
@@ -42,7 +82,10 @@ class ItemList extends Component {
             </div>
         }
         return items.map((item, index) => {
-            return <Item key={index} label={item.label}/>
+            return <Item 
+            key={index}
+            removeItem={()=> this.removeItem(index)} 
+            label={item.label}/>
         })
 
 
@@ -53,6 +96,7 @@ class ItemList extends Component {
             <div className="input-group mb-2">
                 <input type="text"
                        className="form-control"
+                       onKeyPress={this.handleKeyPress} 
                        value={this.state.itemLabel}
                        onChange={this.handleChange}
                 />
@@ -64,6 +108,13 @@ class ItemList extends Component {
                         <i className="fa fa-plus"></i>
                     </button>
                 </div>
+            </div>
+            <div className="input-group mb-2">
+                <input type="text"
+                    className="form-control"
+                    value={this.state.search}
+                    onChange={this.handleSearchChange}
+                />
             </div>
             <ul className="list-group mt-3">
                 {this.getListItems()}
