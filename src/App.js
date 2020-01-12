@@ -1,9 +1,10 @@
 import React from 'react';
 import FunctionalComponent from './components/FunctionalComponent';
 import ClassComponent from './components/ClassComponent';
-import ReduxComponent from './components/ReduxComponent';
+import Movies from './components/Movies';
 import Header from './components/header/Header';
 import Home from './pages/Home';
+import Favorite from './pages/Favorite';
 
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
@@ -37,10 +38,17 @@ const routes = [
         </Layout>
     },
     {
+        path: '/favorite',
+        exact: false,
+        main: () => <Layout>
+            <Favorite/>
+        </Layout>
+    },
+    {
         path: '/gallery',
         exact: false,
         main: () => <Layout>
-            <ReduxComponent/>
+            <Movies/>
         </Layout>
     }
 ]
