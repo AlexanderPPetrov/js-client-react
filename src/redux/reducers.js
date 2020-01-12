@@ -12,6 +12,20 @@ function movies(state = [], action) {
     }
 }
 
+function favoriteMovies(state=[], action){
+    switch (action.type) {
+        case types.ADD_FAVORITE_MOVIE: {
+            return [...state, action.payload];
+        }
+        case types.REMOVE_FAVORITE_MOVIE: {
+            state.splice(action.payload, 1)
+            return [...state];
+        }
+        default:
+            return state;
+    }
+}
+
 function error(state = {}, action) {
     switch (action.type) {
         case types.SET_ERROR: {
@@ -23,4 +37,4 @@ function error(state = {}, action) {
 }
 
 
-export default combineReducers({movies, error});
+export default combineReducers({movies, favoriteMovies, error});

@@ -8,10 +8,39 @@ class TestComponent extends Component {
         this.props.getMovies();
     }
 
+    toggleFavoriteMovie = movie => {
+        const movieIndex = this.props.favoriteMovies.indexOf(movie);
+
+        if(movieIndex != -1){
+            this.props.removeFavoriteMovie(movieIndex);
+        }else{
+            this.props.addFavoriteMovie(movie);
+        }
+        console.log(this.props.favoriteMovies)
+    }
+
+    getActiveClass = movie => {
+        if(this.props.favoriteMovies.indexOf(movie) != -1){
+            return "active"
+        }
+        return ""
+    }
     getMovieList = () => {
-        const movieList = this.props.movies.map((movie, index) => {
-            return <li key={movie.id} className="list-group-item">
-                {movie.title}
+        const movieList = this.props.movies.map(movie => {
+            return <li key={movie.id} className="
+            d-flex justify-content-between list-group-item">
+                <span>
+                    <i className={
+                        "fa fa-star mr-3 favorite-movie " + 
+                        this.getActiveClass(movie)
+                    }
+                        onClick={() => {
+                            this.toggleFavoriteMovie(movie);
+                        }}
+                    ></i>
+                    {movie.title}
+                </span>
+                <span>{movie.releaseYear}</span>
             </li>
         })
         return movieList;
@@ -24,7 +53,8 @@ class TestComponent extends Component {
 }
 const mapStateToProps = state => {
     return {
-        movies: state.movies
+        movies: state.movies,
+        favoriteMovies: state.favoriteMovies
     }
 };
 
@@ -32,7 +62,9 @@ const mapStateToProps = state => {
 const mapStateToDispatch = dispatch => {
     return bindActionCreators({
         setMovies: actions.setMovies,
-        getMovies: actions.getMovies
+        getMovies: actions.getMovies,
+        addFavoriteMovie: actions.addFavoriteMovie,
+        removeFavoriteMovie: actions.removeFavoriteMovie
     }, dispatch)
 };
 

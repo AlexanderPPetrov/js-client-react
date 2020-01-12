@@ -7,6 +7,15 @@ export function setMovies (movies) {
 export function setError (error) {
     return { type: types.SET_ERROR, payload: error };
 }
+
+export function addFavoriteMovie(movie){
+    return {type: types.ADD_FAVORITE_MOVIE, payload: movie};
+}
+
+export function removeFavoriteMovie(index){
+    return {type: types.REMOVE_FAVORITE_MOVIE, payload: index};
+}
+
 export const getMovies = () => async dispatch => {
 
     try {

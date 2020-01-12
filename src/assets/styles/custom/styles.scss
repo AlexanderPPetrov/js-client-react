@@ -1,3 +1,9 @@
 .remove-list-item {
     cursor: pointer;
 }
+.favorite-movie {
+    cursor: pointer;
+    &.active {
+        color: theme-color("action");
+    }
+}
