@@ -2,16 +2,24 @@ import React, {Component} from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as actions from "../redux/actions";
-class ReduxComponent extends Component {
+class TestComponent extends Component {
 
     componentDidMount() {
         this.props.getMovies();
     }
 
+    getMovieList = () => {
+        const movieList = this.props.movies.map((movie, index) => {
+            return <li key={movie.id} className="list-group-item">
+                {movie.title}
+            </li>
+        })
+        return movieList;
+    }
     render() {
-        return <div className="alert alert-success">
-            <i className="fa fa-cube mr-3"></i>Redux Component Example
-        </div>
+        return <ul className="list-group">
+            {this.getMovieList()}
+        </ul>
     }
 }
 const mapStateToProps = state => {
@@ -28,4 +36,4 @@ const mapStateToDispatch = dispatch => {
     }, dispatch)
 };
 
-export default connect(mapStateToProps, mapStateToDispatch)(ReduxComponent);
+export default connect(mapStateToProps, mapStateToDispatch)(TestComponent);

@@ -40,7 +40,7 @@ const routes = [
         path: '/gallery',
         exact: false,
         main: () => <Layout>
-            <FunctionalComponent/>
+            <ReduxComponent/>
         </Layout>
     }
 ]
@@ -57,11 +57,13 @@ const getRoutes = () => {
 }
 
 function App() {
-    return <Router>
-        <Switch>
-            {getRoutes()}
-        </Switch>
-    </Router>
+    return <Provider store={store}>
+        <Router>
+            <Switch>
+                {getRoutes()}
+            </Switch>
+        </Router>
+    </Provider>
 }
 
 export default App;

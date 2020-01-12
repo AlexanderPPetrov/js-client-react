@@ -50,7 +50,7 @@ export default {
             baseURL: constants.baseURL,
         }, options);
 
-        // data.params = Object.assign(options.params, {api_key: constants.apiKey});
+        //data.params = Object.assign(options.params, {api_key: constants.apiKey});
         return new Promise((resolve, reject) => {
 
             axios(data)
