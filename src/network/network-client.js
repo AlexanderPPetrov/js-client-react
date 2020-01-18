@@ -3,7 +3,7 @@ import constants from '../constants';
 
 export default {
 
-    get(url, success, failure, params) {
+    get(url, params, success, failure) {
         return this.request({
             method: 'get',
             url,
