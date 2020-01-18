@@ -36,8 +36,9 @@ export function setMdMovies (movies) {
 export const getMdMovies = () => async dispatch => {
 
     try {
+        debugger
         const res = await networkClient.get(
-            "https://facebook.github.io/react-native/movies.json");
+            "movie/top_rated");
         dispatch(setMovies(res.movies));
     } catch(ex) {
         dispatch(setError({message: 'There was an error!'}))
