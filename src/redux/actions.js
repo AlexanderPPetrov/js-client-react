@@ -34,7 +34,6 @@ export function setMdMovies (movies) {
 }
 
 export const getMdTopRatedMovies = () => async dispatch => {
-
     try {
         const response = await networkClient.get(
          "movie/top_rated");
@@ -42,5 +41,19 @@ export const getMdTopRatedMovies = () => async dispatch => {
     } catch(ex) {
         dispatch(setError({message: 'There was an error!'}))
     }
+};
 
+// Movie Database - Movie details
+export function setMovieDetails (movie) {
+    return {type: types.SET_MOVIE_DETAILS, payload: movie}
+}
+
+export const getMovieDetails = id => async dispatch => {
+    try {
+        const response = await networkClient.get(
+         `movie/${id}`);
+        dispatch(setMovieDetails(response));
+    } catch(ex) {
+        dispatch(setError({message: 'There was an error!'}))
+    }
 };

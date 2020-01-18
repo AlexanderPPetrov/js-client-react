@@ -1,19 +1,22 @@
 import React, {Component} from "react";
 import {withRouter} from 'react-router-dom';
 
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import * as actions from "../redux/actions";
+
 class MovieDetails extends Component {
 
     componentDidMount = () => {
         const movieId = this.props.match.params.id;
-
-        console.log('Movie id', movieId);
+        this.props.getMovieDetails(movieId);
     }
     render() {
         return <div className="row">
             <div className="col">
                 <div className="card">
                     <div className="card-body">
-                        Movie Details
+                        {this.props.movieDetails.title}
                     </div>
                 </div>
             </div>
@@ -21,11 +24,18 @@ class MovieDetails extends Component {
     }
 }
 
+const mapStateToProps = state => {
+    return {
+        movieDetails: state.movieDetails,
+    }
+};
 
-// 1. Rafactor MovieDetails component to be a 
-// redux connected component
+const mapStateToDispatch = dispatch => {
+    return bindActionCreators({
+        setMovieDetails: actions.setMovieDetails,
+        getMovieDetails: actions.getMovieDetails,
+    }, dispatch)
+};
 
-// 2. Create MovieDetails? reducer
-
-// 3. Render movie title in MovieDetails
-export default withRouter(MovieDetails);
+export default connect(mapStateToProps, mapStateToDispatch)
+        (withRouter(MovieDetails));
