@@ -8,7 +8,7 @@ import * as actions from "../redux/actions";
 class MovieList extends Component {
 
     componentDidMount(){
-        this.props.getMdMovies();
+        this.props.getMdTopRatedMovies();
     }
     render() {
         return <div className="row">
@@ -27,7 +27,7 @@ const mapStateToProps = state => {
 const mapStateToDispatch = dispatch => {
     return bindActionCreators({
         setMdMovies: actions.setMdMovies,
-        getMdMovies: actions.getMdMovies,
+        getMdTopRatedMovies: actions.getMdTopRatedMovies,
     }, dispatch)
 };
 

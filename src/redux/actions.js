@@ -33,10 +33,9 @@ export function setMdMovies (movies) {
     return {type: types.MD_SET_MOVIES, payload: movies}
 }
 
-export const getMdMovies = () => async dispatch => {
+export const getMdTopRatedMovies = () => async dispatch => {
 
     try {
-        debugger
         const res = await networkClient.get(
             "movie/top_rated");
         dispatch(setMovies(res.movies));
