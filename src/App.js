@@ -21,6 +21,10 @@ import {
 const store = createStore(reducers, applyMiddleware(thunk));
 
 
+
+// Skype alexppetrov
+
+
 const Layout = props => (
     <>
         <Header/>

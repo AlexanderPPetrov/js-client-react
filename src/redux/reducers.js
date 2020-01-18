@@ -60,8 +60,33 @@ function movieDetails(state = {}, action) {
     }
 }
 
+function currentPage(state = 1, action) {
+    switch (action.type) {
+        case types.SET_CURRENT_PAGE: {
+            return action.payload;
+        }
+        default:
+            return state;
+    }
+}
+
+function totalPages(state = 0, action) {
+    switch (action.type) {
+        case types.SET_TOTAL_PAGES: {
+            return action.payload;
+        }
+        default:
+            return state;
+    }
+}
 
 
-
-
-export default combineReducers({movies, favoriteMovies, error, movieDatabaseMovies, movieDetails});
+export default combineReducers({
+    movies, 
+    favoriteMovies, 
+    error, 
+    movieDatabaseMovies, 
+    movieDetails,
+    currentPage,
+    totalPages
+});
