@@ -3,6 +3,7 @@ import Movies from './components/Movies';
 import Header from './components/header/Header';
 import Home from './pages/Home';
 import Favorite from './pages/Favorite';
+import MovieList from './pages/MovieList';
 
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
@@ -48,7 +49,15 @@ const routes = [
         main: () => <Layout>
             <Movies/>
         </Layout>
+    },
+    {
+        path: '/popularmovies',
+        exact: true,
+        main: () => <Layout>
+            <MovieList/>
+        </Layout>
     }
+
 ]
 
 const getRoutes = () => {
@@ -73,3 +82,13 @@ function App() {
 }
 
 export default App;
+
+
+//TODO
+// 1. Да се добави в навигацията нов линк 
+// към нова страничка (компонент) MovieList.js
+// * Да се добави в routes, да се дефинира път 
+// "/popularmovies", на който да се зареди MovieList 
+
+// 2. В MovieList да се зареди компонент отговарящ на един
+// филм, примерно SingleMovie.js
