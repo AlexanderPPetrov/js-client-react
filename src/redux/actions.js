@@ -27,3 +27,20 @@ export const getMovies = () => async dispatch => {
     }
 
 };
+
+// Movie Database functions
+export function setMdMovies (movies) {
+    return {type: types.MD_SET_MOVIES, payload: movies}
+}
+
+export const getMdMovies = () => async dispatch => {
+
+    try {
+        const res = await networkClient.get(
+            "https://facebook.github.io/react-native/movies.json");
+        dispatch(setMovies(res.movies));
+    } catch(ex) {
+        dispatch(setError({message: 'There was an error!'}))
+    }
+
+};

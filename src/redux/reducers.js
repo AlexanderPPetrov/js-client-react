@@ -36,5 +36,21 @@ function error(state = {}, action) {
     }
 }
 
+// The Movie Database connected data
 
-export default combineReducers({movies, favoriteMovies, error});
+function movieDatabaseMovies(state = [], action) {
+    switch (action.type) {
+        case types.MD_SET_MOVIES: {
+            return [...action.payload];
+        }
+
+        default:
+            return state;
+    }
+}
+
+
+
+
+
+export default combineReducers({movies, favoriteMovies, error, movieDatabaseMovies});
