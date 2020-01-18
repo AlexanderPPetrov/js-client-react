@@ -1,9 +1,14 @@
 import React, {Component} from "react";
 import constants from "../../constants";
 import moment from "moment";
+import {withRouter} from 'react-router-dom';
 
 class SingleMovie extends Component {
 
+
+    showMovieDetails = () => {
+        this.props.history.push(`/moviedetails/${this.props.id}`);
+    }
     render() {
         return <div className="col-md-6">
                 <div className="d-flex
@@ -12,7 +17,7 @@ class SingleMovie extends Component {
                 border shadow-sm mb-3 bg-white rounded
                 single-movie
                 ">
-                    <img className="movie-image" 
+                    <img className="movie-image" alt=""
                     src={constants.basePosterURL + this.props.poster_path}/>
                     <div className="p-3 d-flex flex-column">
                         <div className="pb-3">
@@ -23,7 +28,8 @@ class SingleMovie extends Component {
                             </div>
                         </div>
                         <div className="mt-auto border-top pt-3">
-                            <button type="button" 
+                            <button type="button"
+                            onClick={this.showMovieDetails} 
                             className="btn btn-link">
                                 Повече Информация
                             </button>
@@ -34,4 +40,4 @@ class SingleMovie extends Component {
     }
 }
 
-export default SingleMovie;
+export default withRouter(SingleMovie);
