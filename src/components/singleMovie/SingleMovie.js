@@ -1,4 +1,6 @@
 import React, {Component} from "react";
+import constants from "../../constants";
+import moment from "moment";
 
 class SingleMovie extends Component {
 
@@ -11,13 +13,13 @@ class SingleMovie extends Component {
                 single-movie
                 ">
                     <img className="movie-image" 
-                    src="https://image.tmdb.org/t/p/w370_and_h556_bestv2/fn5hrKQNVv3NsXim3pHN0ZztPj5.jpg"/>
+                    src={constants.basePosterURL + this.props.poster_path}/>
                     <div className="p-3 d-flex flex-column">
                         <div className="pb-3">
-                            <h4>Movie title</h4>
-                            <p>2939.20203.2</p>
+                            <h4>{this.props.title}</h4>
+                            <p>{moment(this.props.release_date).format("MMMM Do YYYY")}</p>
                             <div className="mt-3 movie-description">
-                                Сюжетът разказва историята на Рой МакБрайд – космически инженер. Бащата на МакБрайд е изчезнал безследно преди 20 год., по време на космическа експедиция към Не…
+                                {this.props.overview}
                             </div>
                         </div>
                         <div className="mt-auto border-top pt-3">

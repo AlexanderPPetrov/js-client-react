@@ -10,14 +10,25 @@ class MovieList extends Component {
     componentDidMount(){
         this.props.getMdTopRatedMovies();
     }
-    // this.props.movieDatabaseMovies
-    //TODO 
-    // 1. write a function that will return component SingleMovie for each
-    // element in this.props.movieDatabaseMovies
+
+    getMovieList = () => {
+        const movieList = 
+            this.props.movieDatabaseMovies.map( movie => {
+            return <SingleMovie 
+                key={movie.id}
+                title={movie.title}
+                poster_path={movie.poster_path}
+                release_date={movie.release_date}
+                overview={movie.overview}
+                id={movie.id}
+            />        
+        });
+        return movieList
+    }
 
     render() {
         return <div className="row">
-            <SingleMovie/>
+            {this.getMovieList()}
         </div>
     }
 }
