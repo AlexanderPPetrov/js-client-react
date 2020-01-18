@@ -10,6 +10,11 @@ class MovieList extends Component {
     componentDidMount(){
         this.props.getMdTopRatedMovies();
     }
+    // this.props.movieDatabaseMovies
+    //TODO 
+    // 1. write a function that will return component SingleMovie for each
+    // element in this.props.movieDatabaseMovies
+
     render() {
         return <div className="row">
             <SingleMovie/>
@@ -19,7 +24,7 @@ class MovieList extends Component {
 
 const mapStateToProps = state => {
     return {
-        movies: state.movies,
+        movieDatabaseMovies: state.movieDatabaseMovies,
     }
 };
 

@@ -36,9 +36,9 @@ export function setMdMovies (movies) {
 export const getMdTopRatedMovies = () => async dispatch => {
 
     try {
-        const res = await networkClient.get(
-            "movie/top_rated");
-        dispatch(setMovies(res.movies));
+        const response = await networkClient.get(
+         "movie/top_rated");
+        dispatch(setMdMovies(response.results));
     } catch(ex) {
         dispatch(setError({message: 'There was an error!'}))
     }
