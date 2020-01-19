@@ -1,10 +1,26 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+Необходими неща, за да стартирате проекта
 
-In the project directory, you can run:
+https://git-scm.com/download/win
+
+https://nodejs.org/en/download/
+
+Препоръчителни IDE-та
+
+Visual Studio Code
+https://code.visualstudio.com/download
+
+Webstorm или Intellij с безплатен лиценз за студенти (трябва ви email към университета)
+https://www.jetbrains.com/student/
+
+
+След изтегляне на проекта в терминала трябва да се изпълни: 
+
+### `npm install`        
 
 ### `npm start`
+
 
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
