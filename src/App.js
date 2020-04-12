@@ -2,6 +2,7 @@ import React from 'react';
 import Movies from './components/Movies';
 import Header from './components/header/Header';
 import Home from './pages/Home';
+import Games from './pages/Games';
 import Favorite from './pages/Favorite';
 import MovieList from './pages/MovieList';
 import MovieDetails from './pages/MovieDetails';
@@ -40,6 +41,13 @@ const routes = [
         exact: true,
         main: () => <Layout>
             <Home/>
+        </Layout>
+    },
+    {
+        path: '/games',
+        exact: true,
+        main: () => <Layout>
+            <Games/>
         </Layout>
     },
     {
