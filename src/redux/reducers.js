@@ -6,7 +6,6 @@ function movies(state = [], action) {
         case types.SET_MOVIES: {
             return [...action.payload];
         }
-
         default:
             return state;
     }
@@ -16,6 +15,11 @@ function games(state = [], action) {
     switch (action.type) {
         case types.SET_GAMES: {
             return [...action.payload];
+        }
+        case types.ADD_GAME: {
+            const currentGames = state.slice();
+            currentGames.push(action.payload);
+            return [...currentGames];
         }
         default:
             return state;

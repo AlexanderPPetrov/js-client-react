@@ -13,5 +13,16 @@ export default {
             `
         })
         return response;
+    },
+    async addGame(variables, responseFields){
+        const response = await graphQLClient.mutate({
+            mutation: gql `mutation($name: String!, $description: String!, $imageUrl: String!, $price: Float!){
+                addGame(name: $name, description: $description, imageUrl: $imageUrl, price: $price){
+                    ${responseFields}
+                }
+            }`,
+            variables
+        })
+        return response;
     }
 }

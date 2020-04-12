@@ -8,4 +8,5 @@ export default {
     SET_CURRENT_PAGE: 'SET_CURRENT_PAGE',
     SET_TOTAL_PAGES: 'SET_TOTAL_PAGES',
     SET_GAMES: 'SET_GAMES',
+    ADD_GAME: 'ADD_GAME',
 };
