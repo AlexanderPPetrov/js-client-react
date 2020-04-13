@@ -58,6 +58,28 @@ export const addGame = (variables, responseFields = "_id") => async dispatch => 
     }
 };
 
+export const deleteGame = (variables, responseFields = "_id") => async dispatch => {
+    try {
+        const response = await graphQLService.deleteGame(variables, responseFields);
+        dispatch(deleteGameFromStore(response.data.deleteGame._id));
+    } catch(ex) {
+        dispatch(setError({message: 'There was an error!'}))
+    }
+};
+
+export function deleteGameFromStore (game) {
+    return {type: types.DELETE_GAME, payload: game}
+}
+
+export const addGameToUser = (variables, responseFields = "_id") => async dispatch => {
+    try {
+        const response = await graphQLService.editUser(variables, responseFields);
+        //TODO you can actually connect to redux and render from it
+    } catch(ex) {
+        dispatch(setError({message: 'There was an error!'}))
+    }
+};
+
 //---------------------
 
 

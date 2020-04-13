@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import * as actions from "../redux/actions";
 import AddGame from '../components/AddGame';
+import Game from '../components/games/Game';
 
 class Games extends Component {
 
@@ -11,16 +12,8 @@ class Games extends Component {
     }
     renderGames = () => {
       //TODO refactor to a functional component
-        const gamesList = this.props.games.map((game, index) => {
-            return <div key={game._id}  className="col-md-4">
-                <div className="card">
-            <img src={game.imageUrl} className="card-img-top" alt={game.name}/>
-            <div className="card-body">
-                <h5 className="card-title">{game.name}</h5>
-                <p className="card-text">{game.description}</p>
-            </div>
-          </div>
-            </div>
+        const gamesList = this.props.games.map(game => {
+            return <Game key={game._id} game={game}/>
         })
         return gamesList;
     }

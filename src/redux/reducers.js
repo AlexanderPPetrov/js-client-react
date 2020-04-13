@@ -21,10 +21,14 @@ function games(state = [], action) {
             currentGames.push(action.payload);
             return [...currentGames];
         }
+        case types.DELETE_GAME: {
+            return state.filter(item => item._id !== action.payload)
+        }
         default:
             return state;
     }
 }
+
 
 function favoriteMovies(state=[], action){
     switch (action.type) {
