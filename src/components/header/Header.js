@@ -10,6 +10,8 @@ import {
 } from 'reactstrap';
 
 import { NavLink as RRNavLink } from 'react-router-dom';
+import Register from '../Register';
+import { connect } from "react-redux";
 
 class Header extends Component {
 
@@ -55,7 +57,7 @@ class Header extends Component {
                             Games
                         </NavLink>
                     </NavItem>
-                    <NavItem>
+                    {/* <NavItem>
                         <NavLink
                             tag={RRNavLink}
                             exact to="/favorite"
@@ -79,7 +81,13 @@ class Header extends Component {
                             activeClassName="active">
                             Gallery
                         </NavLink>
-                    </NavItem>
+                    </NavItem> */}
+
+                    {this.props.token ? (
+                        <div>User icon ....</div>
+                    ) : (
+                        <Register buttonLabel="Регистрирай се"/>
+                    )}
                 </Nav>
             </Collapse>
             </Container>
@@ -87,4 +95,10 @@ class Header extends Component {
     }
 }
 
-export default Header;
+const mapStateToProps = state => {
+    return {
+        token: state.token,
+    }
+};
+
+export default connect(mapStateToProps)(Header);

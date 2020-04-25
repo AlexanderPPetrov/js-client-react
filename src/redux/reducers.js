@@ -54,6 +54,28 @@ function error(state = {}, action) {
     }
 }
 
+function token(state = localStorage.getItem('token') ? localStorage.getItem('token') : '', action) {
+    switch (action.type) {
+        case types.SAVE_TOKEN: {
+            localStorage.setItem('token', action.payload);
+            return action.payload
+        }
+        default:
+            return state;
+    }
+}
+
+
+function graphQLErrors(state = [], action) {
+    switch (action.type) {
+        case types.ADD_GRAPHQL_ERROR: {
+            return [...state, action.payload]
+        }
+        default:
+            return state;
+    }
+}
+
 // The Movie Database connected data
 
 function movieDatabaseMovies(state = [], action) {
@@ -107,5 +129,7 @@ export default combineReducers({
     movieDatabaseMovies, 
     movieDetails,
     currentPage,
-    totalPages
+    totalPages,
+    token,
+    graphQLErrors,
 });

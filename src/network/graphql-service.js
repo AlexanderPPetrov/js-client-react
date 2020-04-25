@@ -53,5 +53,15 @@ export default {
         return response;
     },
 
+    async addUser(variables){
+        const response = await graphQLClient.mutate({
+            mutation: gql `mutation($firstName: String!, $lastName: String!, $email: String!, $userType: String!, $password: String!){
+                addUser(firstName: $firstName, lastName: $lastName, email: $email, userType: $userType, password: $password)
+            }`,
+            variables
+        })
+        return response;
+    },
+
 }
 
