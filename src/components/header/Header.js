@@ -11,7 +11,12 @@ import {
 
 import { NavLink as RRNavLink } from 'react-router-dom';
 import Register from '../Register';
+import Login from '../Login';
+import UserMenu from '../UserMenu';
+
 import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import * as actions from "../../redux/actions";
 
 class Header extends Component {
 
@@ -28,8 +33,12 @@ class Header extends Component {
         })
     }
 
+    componentDidMount = () => {
+        this.props.getCurrentUser();
+    }
+
     render() {
-        return <Navbar color="primary" dark expand="md">
+        return <Navbar color="dark" dark expand="md">
             <Container>
                 <NavLink
                     tag={RRNavLink}
@@ -84,9 +93,12 @@ class Header extends Component {
                     </NavItem> */}
 
                     {this.props.token ? (
-                        <div>User icon ....</div>
+                            <UserMenu/>
                     ) : (
-                        <Register buttonLabel="Регистрирай се"/>
+                        <>
+                            <Register buttonLabel="Регистрирай се"/>
+                            <Login buttonLabel="Влез"/>
+                        </>
                     )}
                 </Nav>
             </Collapse>
@@ -101,4 +113,10 @@ const mapStateToProps = state => {
     }
 };
 
-export default connect(mapStateToProps)(Header);
+const mapStateToDispatch = dispatch => {
+    return bindActionCreators({
+        getCurrentUser: actions.getCurrentUser,
+    }, dispatch)
+};
+
+export default connect(mapStateToProps, mapStateToDispatch)(Header);

@@ -39,13 +39,9 @@ export default {
     async editUser(variables, responseFields){
         const response = await graphQLClient.mutate({
             mutation: gql `
-            mutation($_id: String!, $username: String, $email: String,
-                $password: String, $games: [GameInput]){
-               editUser(_id: $_id, username: $username, email: $email, 
-                   password: $password, games: $games){
-                    games {
-                        name
-                    }
+            mutation($_id: String!, $firstName: String!, $lastName: String!, $password: String!){
+               editUser(_id: $_id, firstName: $firstName, lastName: $lastName, password: $password){
+                    ${responseFields}
                }
            }`,
            variables
@@ -63,5 +59,27 @@ export default {
         return response;
     },
 
+    async login(variables){
+        const response = await graphQLClient.mutate({
+            mutation: gql `mutation($email: String!, $password: String!){
+                login(email: $email, password: $password)
+            }`,
+            variables
+        })
+        return response;
+    },
+
+    async currentUser(responseFields = "_id firstName lastName email userType games {name}"){
+        const response = await graphQLClient.query({
+            query: gql `
+                query {
+                    currentUser {
+                        ${responseFields}
+                    }
+                }
+            `
+        })
+        return response;
+    }
 }
 

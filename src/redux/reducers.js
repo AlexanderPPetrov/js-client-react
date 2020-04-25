@@ -54,6 +54,16 @@ function error(state = {}, action) {
     }
 }
 
+function currentUser(state = {}, action) {
+    switch (action.type) {
+        case types.SET_USER: {
+            return {...action.payload};
+        }
+        default:
+            return state;
+    }
+}
+
 function token(state = localStorage.getItem('token') ? localStorage.getItem('token') : '', action) {
     switch (action.type) {
         case types.SAVE_TOKEN: {
@@ -132,4 +142,5 @@ export default combineReducers({
     totalPages,
     token,
     graphQLErrors,
+    currentUser,
 });

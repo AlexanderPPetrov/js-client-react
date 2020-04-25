@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import RegisterForm from './RegisterForm';
+import LoginForm from './LoginForm';
 
 const Register = (props) => {
   const {
@@ -14,14 +14,14 @@ const Register = (props) => {
 
   return (
     <div className="d-flex align-items-center ml-2">
-      <Button color="success" onClick={toggle} className="btn-sm">{buttonLabel}</Button>
+      <Button outline color="light" onClick={toggle} className="btn-sm">{buttonLabel}</Button>
       <Modal isOpen={modal} toggle={toggle} >
-        <ModalHeader toggle={toggle}>Register User</ModalHeader>
+        <ModalHeader toggle={toggle}>Login</ModalHeader>
         <ModalBody>
-            <RegisterForm/>
+            <LoginForm/>
         </ModalBody>
         <ModalFooter>
-          За да използвате максимално услугите на този сайт трябва да сте регистриран потребител.
+          Ако сте забравили паролата си няма как да си я възстановите :)
         </ModalFooter>
       </Modal>
     </div>

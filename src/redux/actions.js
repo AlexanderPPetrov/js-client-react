@@ -61,6 +61,7 @@ export const addGame = (variables, responseFields = "_id") => async dispatch => 
 export const addUser = variables => async dispatch => {
     try {
         const response = await graphQLService.addUser(variables);
+        dispatch(getCurrentUser());
         dispatch(saveToken(response.data.addUser));
     } catch(e){
         console.log(e);
@@ -68,12 +69,46 @@ export const addUser = variables => async dispatch => {
     }
 }
 
+
+export const editUser = (variables, responseFields = "_id firstName lastName email userType games {name}") => async dispatch => {
+    try {
+        const response = await graphQLService.editUser(variables, responseFields);
+        dispatch(getCurrentUser());
+    } catch(e){
+        console.log(e);
+        dispatch(setGraphQLError({request: "editUser", errors: []}))
+    }
+}
+
+export const login = variables => async dispatch => {
+    try {
+        const response = await graphQLService.login(variables);
+        dispatch(getCurrentUser());
+        dispatch(saveToken(response.data.login));
+    } catch(e){
+        console.log(e);
+        dispatch(setGraphQLError({request: "login", errors: []}))
+    }
+}
 export function saveToken(token){
     return {type: types.SAVE_TOKEN, payload: token}
 }
 
 export function setGraphQLError (error) {
     return { type: types.ADD_GRAPHQL_ERROR, payload: error };
+}
+
+export const getCurrentUser = () => async dispatch => {
+    try {
+        const response = await graphQLService.currentUser();
+        dispatch(saveCurrentUser(response.data.currentUser));
+    } catch(e){
+        dispatch(saveToken(''));
+    }
+}
+
+export function saveCurrentUser(user){
+    return {type: types.SET_USER, payload: user}
 }
 
 export const deleteGame = (variables, responseFields = "_id") => async dispatch => {
@@ -92,7 +127,7 @@ export function deleteGameFromStore (game) {
 export const addGameToUser = (variables, responseFields = "_id") => async dispatch => {
     try {
         const response = await graphQLService.editUser(variables, responseFields);
-        //TODO you can actually connect to redux and render from it
+        dispatch(saveCurrentUser(response.data.editUser));
     } catch(ex) {
         dispatch(setError({message: 'There was an error!'}))
     }
