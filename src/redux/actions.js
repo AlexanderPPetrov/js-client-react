@@ -64,7 +64,9 @@ export const addUser = variables => async dispatch => {
         dispatch(getCurrentUser());
         dispatch(saveToken(response.data.addUser));
     } catch(e){
-        console.log(e);
+        e.graphQLErrors.forEach(error => {
+            console.log(error)
+        })
         dispatch(setGraphQLError({request: "addUser", errors: []}))
     }
 }
@@ -94,6 +96,10 @@ export function saveToken(token){
     return {type: types.SAVE_TOKEN, payload: token}
 }
 
+export function setUserLoaded(){
+    return {type: types.SET_USER_LOADED, payload: true}
+}
+
 export function setGraphQLError (error) {
     return { type: types.ADD_GRAPHQL_ERROR, payload: error };
 }
@@ -102,8 +108,10 @@ export const getCurrentUser = () => async dispatch => {
     try {
         const response = await graphQLService.currentUser();
         dispatch(saveCurrentUser(response.data.currentUser));
+        dispatch(setUserLoaded())
     } catch(e){
         dispatch(saveToken(''));
+        dispatch(setUserLoaded())
     }
 }
 

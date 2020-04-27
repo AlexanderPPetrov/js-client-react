@@ -7,6 +7,7 @@ import Favorite from './pages/Favorite';
 import MovieList from './pages/MovieList';
 import MovieDetails from './pages/MovieDetails';
 import Profile from './pages/Profile';
+import ProtectedPage from './pages/ProtectedPage';
 
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
@@ -81,9 +82,20 @@ const routes = [
     {
         path: '/profile',
         exact: false,
-        main: () => <Layout>
+        main: () => {
+            return <Layout>
             <Profile/>
         </Layout>
+        }
+    },
+    {
+        path: '/protected',
+        exact: false,
+        main: () => {
+            return <Layout>
+            <ProtectedPage/>
+        </Layout>
+        }
     },
 
 ]
@@ -101,7 +113,6 @@ const getRoutes = () => {
 
 
 function App() {
-  
     return <Provider store={store}>
         <Router>
             <Switch>

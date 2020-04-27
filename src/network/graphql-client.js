@@ -6,7 +6,7 @@ import { setContext } from 'apollo-link-context';
 
 
 const httpLink = createHttpLink({
-    uri: constants.graphQLURL
+    uri: constants.graphQLURL,
 })
 
 const authLink = setContext((_, { headers}) => {

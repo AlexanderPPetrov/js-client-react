@@ -54,6 +54,15 @@ function error(state = {}, action) {
     }
 }
 
+function userLoaded(state = false, action) {
+    switch (action.type) {
+        case types.SET_USER_LOADED: {
+            return action.payload;
+        }
+        default:
+            return state;
+    }
+}
 function currentUser(state = {}, action) {
     switch (action.type) {
         case types.SET_USER: {
@@ -143,4 +152,5 @@ export default combineReducers({
     token,
     graphQLErrors,
     currentUser,
+    userLoaded,
 });

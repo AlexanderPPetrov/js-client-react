@@ -66,6 +66,14 @@ class Header extends Component {
                             Games
                         </NavLink>
                     </NavItem>
+                    <NavItem>
+                        <NavLink
+                            tag={RRNavLink}
+                            exact to="/protected"
+                            activeClassName="active">
+                            Protected
+                        </NavLink>
+                    </NavItem>
                     {/* <NavItem>
                         <NavLink
                             tag={RRNavLink}
